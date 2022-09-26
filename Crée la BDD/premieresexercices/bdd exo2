@@ -1,0 +1,50 @@
+CREATE TABLE station(
+   station_num INT,
+   station_nom VARCHAR(255),
+   PRIMARY KEY(station_num)
+);
+
+CREATE TABLE client(
+   client_num INT,
+   client_nom VARCHAR(50),
+   client_prenom VARCHAR(255),
+   client_adresse VARCHAR(255),
+   PRIMARY KEY(client_num)
+);
+
+CREATE TABLE hotel(
+   hotel_num INT,
+   hotel_categorie VARCHAR(255),
+   hotel_nom VARCHAR(255),
+   hotel_adresse VARCHAR(255),
+   hotel_station VARCHAR(255),
+   hotel_capacite INT,
+   station_num INT NOT NULL,
+   PRIMARY KEY(hotel_num),
+   FOREIGN KEY(station_num) REFERENCES station(station_num)
+);
+
+CREATE TABLE chambre(
+   chambre_num INT,
+   chambre_capacite INT,
+   chambre_degres_confort INT,
+   chambre_exposition VARCHAR(255),
+   chambre_type INT,
+   hotel_num INT NOT NULL,
+   PRIMARY KEY(chambre_num),
+   FOREIGN KEY(hotel_num) REFERENCES hotel(hotel_num)
+);
+
+CREATE TABLE reservation(
+   client_num INT,
+   chambre_num INT,
+   date_debut DATETIME,
+   date_fin DATETIME,
+   date_reservation DATETIME,
+   prix_total INT,
+   prix_montant_arrhes INT,
+   PRIMARY KEY(client_num, chambre_num),
+   FOREIGN KEY(client_num) REFERENCES client(client_num),
+   FOREIGN KEY(chambre_num) REFERENCES chambre(chambre_num)
+);
+

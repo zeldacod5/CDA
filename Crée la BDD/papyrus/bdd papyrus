@@ -1,0 +1,66 @@
+CREATE TABLE produit(
+   produit_codeid VARCHAR(4),
+   produit_unite_mesure VARCHAR(5),
+   produit_nom VARCHAR(255),
+   produit_libelle VARCHAR(30),
+   produit_prix INT,
+   produit_date_entree DATETIME,
+   produit_date_derniere_livraison DATETIME,
+   produit_quantite_annuelle INT,
+   produit_prix_unitaire_de_vente DECIMAL(9,2),
+   produit_quantité_livraison INT,
+   produit_stock_alert INT,
+   produit_stock_physique INT,
+   PRIMARY KEY(produit_codeid)
+);
+
+CREATE TABLE fournisseur(
+   fournisseur_id INT,
+   fournisseur_nom VARCHAR(50),
+   fournisseur_contact VARCHAR(15),
+   fournisseur_adresse VARCHAR(255),
+   fournisseur_ville VARCHAR(255),
+   fournisseur_ligne SMALLINT,
+   fournisseur_type SMALLINT,
+   fournisseur_code_postal VARCHAR(5),
+   fournisseur_quantite_livraison INT,
+   fournisseur_satisfaction SMALLINT,
+   PRIMARY KEY(fournisseur_id)
+);
+
+CREATE TABLE propose(
+   produit_codeid VARCHAR(4),
+   fournisseur_id INT,
+   prix_unitaire_1 DECIMAL(9,2),
+   quantite_1 INT,
+   PRIMARY KEY(produit_codeid, fournisseur_id),
+   FOREIGN KEY(produit_codeid) REFERENCES produit(produit_codeid),
+   FOREIGN KEY(fournisseur_id) REFERENCES fournisseur(fournisseur_id)
+);
+
+CREATE TABLE repond(
+   produit_codeid VARCHAR(4),
+   fournisseur_id INT,
+   observation_commentaire VARCHAR(50),
+   prix_unitaire_2 DECIMAL(9,2),
+   quantite_2 VARCHAR(50),
+   PRIMARY KEY(produit_codeid, fournisseur_id),
+   FOREIGN KEY(produit_codeid) REFERENCES produit(produit_codeid),
+   FOREIGN KEY(fournisseur_id) REFERENCES fournisseur(fournisseur_id)
+);
+
+CREATE TABLE commande(
+   produit_codeid VARCHAR(4),
+   fournisseur_id INT,
+   commande_num INT,
+   delais_livraison SMALLINT,
+   date_commande DATETIME,
+   quantite_totale INT,
+   prix_unitaire_3 DECIMAL(9,2),
+   quantite_3 VARCHAR(50),
+   nombre_livraison INT,
+   PRIMARY KEY(produit_codeid, fournisseur_id),
+   FOREIGN KEY(produit_codeid) REFERENCES produit(produit_codeid),
+   FOREIGN KEY(fournisseur_id) REFERENCES fournisseur(fournisseur_id)
+);
+
