@@ -1,3 +1,17 @@
+1. Afficher toutes les informations concernant les employés.
+Select * from employe
+
+2. Afficher toutes les informations concernant les départements.
+SELECT * FROM dept; 
+
+3. Afficher le nom, la date dembauche, le numéro du supérieur, le
+numéro de département et le salaire de tous les employés.
+SELECT 
+
+
+
+:: BASE EXEMPLE PARTIE 2
+
 SELECT noregion, prenom from dept INNER JOIN employe ON nodept=nodep; 
 
 SELECT nodept, dept.nom AS 'nom_departement', employe.nom FROM dept INNER JOIN employe ON nodept=nodep ORDER BY nodept; 
