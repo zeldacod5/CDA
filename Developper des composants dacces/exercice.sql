@@ -181,13 +181,12 @@ SELECT emp1.nom, emp1.salaire, emp2.nom, emp2.salaire FROM employe AS emp1 JOIN 
 --  Amartakaldire.
 SELECT employe.nom, employe.titre FROM employe WHERE employe.titre IN (SELECT employe.titre FROM employe WHERE employe.nom='amartakaldire'); 
 
-
- --QUAND MEME REGARDER LE DOC Il y as des infos
-
- 
 --  Rechercher le nom, le salaire et le numéro de département des
 --  employés qui gagnent plus qu'un seul employé du département 31,
 --  classés par numéro de département et salaire.
+SELECT emp1.nom, emp1.salaire, emp1.nodep FROM employe AS emp1 JOIN employe AS emp2 ON 
+WHERE employe.salaire IN 
+
 
 
 --  Rechercher le nom, le salaire et le numéro de département des
