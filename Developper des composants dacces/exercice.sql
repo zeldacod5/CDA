@@ -184,25 +184,72 @@ SELECT employe.nom, employe.titre FROM employe WHERE employe.titre IN (SELECT em
 --  Rechercher le nom, le salaire et le numéro de département des
 --  employés qui gagnent plus qu'un seul employé du département 31,
 --  classés par numéro de département et salaire.
-SELECT emp1.nom, emp1.salaire, emp1.nodep FROM employe AS emp1 JOIN employe AS emp2 ON 
-WHERE employe.salaire IN 
 
+SELECT nom, salaire, nodep FROM employe
+WHERE employe.salaire >= (SELECT employe.salaire FROM employe WHERE nodep='31' ORDER BY salaire ASC LIMIT 1)
+ORDER BY nodep ASC, salaire DESC; 
 
 
 --  Rechercher le nom, le salaire et le numéro de département des
 --  employés qui gagnent plus que tous les employés du département 31,
 --  classés par numéro de département et salaire.
+SELECT nom, salaire, nodep FROM employe
+WHERE employe.salaire >= (SELECT employe.salaire FROM employe WHERE nodep='31' ORDER BY salaire DESC LIMIT 1)
+ORDER BY nodep ASC, salaire DESC;
 
 
 --  Rechercher le nom et le titre des employés du service 31 qui ont un
 --  titre que l'on trouve dans le département 32.
-
+SELECT nom, titre, nodep FROM employe
+WHERE nodep='31' AND titre = (SELECT employe.titre FROM employe WHERE nodep='32');
 
 --  Rechercher le nom et le titre des employés du service 31 qui ont un
 --  titre l'on ne trouve pas dans le département 32.
-
+SELECT nom, titre, nodep FROM employe
+WHERE nodep='31' AND titre != (SELECT employe.titre FROM employe WHERE nodep='32');
 
 --  Rechercher le nom, le titre et le salaire des employés qui ont le même
 --  titre et le même salaire que Fairant.
+SELECT nom, titre, salaire FROM employe
+WHERE salaire = (SELECT employe.salaire FROM employe WHERE nom='fairent') AND titre = (SELECT employe.titre FROM employe WHERE nom='fairent');
 
+
+-- Rechercher le numéro de département, le nom du département, le
+-- nom des employés, en affichant aussi les départements dans lesquels
+-- il n'y a personne, classés par numéro de département.
+SELECT dept.nodept, dept.nom AS 'NOM DEP.', employe.nom AS 'NOM EMPL.' FROM dept LEFT JOIN employe
+ON dept.nodept=employe.nodep;
+
+
+--  Calculer le nombre d'employés de chaque titre.
+SELECT titre, COUNT(nom) AS 'POPULATION' FROM employe
+GROUP BY titre;
+
+--  Calculer la moyenne des salaires et leur somme, par région
+SELECT nodep, AVG(salaire) AS 'MOY. SALAIRES', SUM(salaire) AS 'SOM. SALAIRES' FROM employe
+GROUP BY nodep;
+
+--  Afficher les numéros des départements ayant au moins 3 employés.
+SELECT nodep, COUNT(nom) AS 'POPULATION' FROM employe
+WHERE 3 <= (SELECT COUNT(nom) FROM employe)
+GROUP BY nodep;
+A FINIR
+
+--  Afficher les lettres qui sont l'initiale d'au moins trois employés.
+
+--  Rechercher le salaire maximum et le salaire minimum parmi tous les
+--  salariés et l'écart entre les deux.
+
+--  Rechercher le nombre de titres différents.
+
+--  Pour chaque titre, compter le nombre d'employés possédant ce titre.
+
+--  Pour chaque nom de département, afficher le nom du département et
+--  le nombre d'employés.
+
+--  Rechercher les titres et la moyenne des salaires par titre dont la
+--  moyenne est supérieure à la moyenne des salaires des Représentants.
+
+--  Rechercher le nombre de salaires renseignés et le nombre de taux de
+--  commission renseignés
 
