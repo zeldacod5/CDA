@@ -1,5 +1,5 @@
 /!\ /!\ /!\ 
--- BASE EXEMPLE PARTIE 1
+:: BASE EXEMPLE PARTIE 1
 /!\ /!\ /!\ 
 
 
@@ -221,6 +221,10 @@ SELECT dept.nodept, dept.nom AS 'NOM DEP.', employe.nom AS 'NOM EMPL.' FROM dept
 ON dept.nodept=employe.nodep;
 
 
+/!\ /!\ /!\
+:: LES 10 REQUETES
+/!\ /!\ /!\ 
+
 --  Calculer le nombre d'employés de chaque titre.
 SELECT titre, COUNT(nom) AS 'POPULATION' FROM employe
 GROUP BY titre;
@@ -233,7 +237,6 @@ GROUP BY nodep;
 SELECT nodep, COUNT(nom) AS 'POPULATION' FROM employe
 WHERE 3 <= (SELECT COUNT(nom) FROM employe)
 GROUP BY nodep;
-A FINIR
 
 --  Afficher les lettres qui sont l'initiale d'au moins trois employés.
 
@@ -252,4 +255,5 @@ A FINIR
 
 --  Rechercher le nombre de salaires renseignés et le nombre de taux de
 --  commission renseignés
+
 
