@@ -242,16 +242,26 @@ GROUP BY nodep;
 
 --  Rechercher le salaire maximum et le salaire minimum parmi tous les
 --  salariés et l'écart entre les deux.
+SELECT max(salaire) AS 'max salaire', min(salaire) AS 'min.salaire', (max(salaire)-min(salaire)) 'écart des salaires'   FROM employe;
+
 
 --  Rechercher le nombre de titres différents.
+SELECT COUNT(DISTINCT titre) AS 'Nombre de titres' FROM employe;
 
 --  Pour chaque titre, compter le nombre d'employés possédant ce titre.
+SELECT COUNT(nom) AS 'NB_EMPLOYES', titre FROM employe
+GROUP BY titre;
 
 --  Pour chaque nom de département, afficher le nom du département et
 --  le nombre d'employés.
+SELECT dept.nom, COUNT(employe.nom) AS "Nombre d'employé par region" FROM dept JOIN employe ON nodep=nodept
+GROUP BY dept.nom;
 
 --  Rechercher les titres et la moyenne des salaires par titre dont la
 --  moyenne est supérieure à la moyenne des salaires des Représentants.
+SELECT titre, AVG(salaire) AS 'SALAIRE_MOY' FROM employe
+WHERE AVG(salaire)>(SELECT AVG(salaire) FROM employe WHERE titre='représentant')
+GROUP BY titre;
 
 --  Rechercher le nombre de salaires renseignés et le nombre de taux de
 --  commission renseignés

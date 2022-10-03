@@ -1,3 +1,4 @@
+-- Active: 1664791382629@@127.0.0.1@3306@hotel
 --  1 - Afficher la liste des hôtels. Le résultat doit faire apparaître le nom de l’hôtel et la ville
 SELECT hot_nom, hot_ville FROM hotel;
 
@@ -16,57 +17,82 @@ SELECT cli_nom, cli_ville FROM client WHERE cli_ville NOT LIKE 'Londre';
 --  6 - Afficher la liste des hôtels située sur la ville de Bretou et possédant une catégorie>3 Le résultat doit faire apparaître le nom de l'hôtel, ville et la catégorie
 SELECT hot_nom, hot_ville, hot_categorie FROM hotel WHERE hot_ville LIKE 'Bretou' AND hot_categorie>3;
 
-
-
 --  7 - Afficher la liste des hôtels avec leur station Le résultat doit faire apparaître le nom de la station, le nom de l’hôtel, la catégorie, la ville)
-SELECT hot_nom, hot_categorie, hot_ville, hot_sta_id FROM hotel;
-
---
-
-SELECT sta_nom,
-    hot_nom,
-    hot_categorie,
-    hot_ville
-from station
-    join hotel on sta_id = hot_sta_id;          (copié sur le git de Ali)
-
+SELECT sta_nom, hot_nom, hot_categorie, hot_ville FROM station JOIN hotel ON sta_id=hot_sta_id; 
 
 --  8 - Afficher la liste des chambres et leur hôtel Le résultat doit faire apparaître le nom de l’hôtel, la catégorie, la ville, le numéro de la chambre)
-SELECT cha_id, cha_hot_id, hot_nom, hot_categorie, hot_ville, cha_numero FROM chambre, hotel;       
-
---
-
-select hot_nom,
-    hot_categorie,
-    hot_ville,
-    cha_numero
-from hotel
-    join chambre on hot_id = cha_hot_id;        (copié sur le git de Ali)
-
+SELECT hot_nom, hot_categorie, hot_ville, cha_numero FROM chambre JOIN hotel ON hot_id=cha_hot_id;
 
 --  9 - Afficher la liste des chambres de plus d'une place dans des hôtels situés sur la ville de Bretou
 -- Le résultat doit faire apparaître le nom de l’hôtel, la catégorie, la ville, le numéro de la chambre et sa capacité)
-SELECT cha_id, hot_nom, hot_categorie, hot_ville, cha_numero, cha_capacite FROM chambre, hotel
+SELECT hot_nom, hot_categorie, hot_ville, cha_numero, cha_capacite FROM hotel JOIN chambre ON hot_id = cha_hot_id
 WHERE cha_capacite>1 AND hot_ville LIKE 'Bretou';
 
 --  10 - Afficher la liste des réservations avec le nom des clients 
---Le résultat doit faire apparaître le nom du client, le nom de l’hôtel, la date de réservation
-SELECT res_id, cli_nom, hot_nom, res_date FROM client, chambre, reservation, hotel;
+--  Le résultat doit faire apparaître le nom du client, le nom de l’hôtel, la date de réservation
+SELECT cli_nom, hot_nom, res_date 
+FROM hotel 
+JOIN chambre ON hot_id=cha_hot_id 
+JOIN reservation ON cha_id=res_cha_id 
+JOIN client ON res_cli_id=cli_id;
 
 --  11 - Afficher la liste des chambres avec le nom de l’hôtel et le nom de la station 
 --  Le résultat doit faire apparaître le nom de la station, le nom de l’hôtel, le numéro de la chambre et sa capacité)
-SELECT DISTINCT cha_id, hot_sta_id, hot_nom, cha_numero, cha_capacite FROM station, hotel, chambre;
+SELECT sta_nom, hot_nom, cha_numero, cha_capacite
+FROM station 
+JOIN hotel ON sta_id=hot_sta_id
+JOIN chambre ON hot_id=cha_hot_id;
 
 --  12 - Afficher les réservations avec le nom du client et le nom de l’hôtel 
 --  le résultat doit faire apparaître le nom du client, le nom de l’hôtel, la date de début du séjour et la durée du séjour
-SELECT res_id, cli_nom, hot_nom, res_date, res_date_debut, res_date_fin FROM client, reservation, hotel;
+SELECT cli_nom, hot_nom, res_date_debut, datediff(res_date_fin, res_date_debut) AS "Durée de séjour" 
+FROM hotel
+JOIN chambre ON hot_id=cha_hot_id 
+JOIN reservation ON cha_id=res_cha_id 
+JOIN client ON cli_id=res_cli_id;
 
 --  13 - Compter le nombre d’hôtel par station
+SELECT COUNT(hot_id) AS "Nombre d'hotel",
+    sta_nom
+FROM station
+    JOIN hotel ON hot_sta_id = sta_id
+GROUP BY sta_nom;
 
 --  14 - Compter le nombre de chambre par station
+SELECT COUNT(cha_id) AS 'Nombre de chambre', sta_nom
+FROM chambre
+JOIN hotel ON hot_id=cha_hot_id
+JOIN station ON sta_id=hot_sta_id
+GROUP BY sta_nom;
+
 
 --  15 - Compter le nombre de chambre par station ayant une capacité > 1
-
+SELECT COUNT(cha_id) AS 'Nombre de chambre', sta_nom
+FROM chambre
+JOIN hotel ON hot_id=cha_hot_id
+JOIN station ON sta_id=hot_sta_id
+WHERE cha_capacite>1
+GROUP BY sta_nom;
 --  16 - Afficher la liste des hôtels pour lesquels Mr Squire a effectué une réservation
+SELECT COUNT(res_id) AS 'Nombre de réservation', hot_nom, cli_nom
+FROM reservation
+JOIN client ON res_cli_id=cli_id
+JOIN chambre ON res_cha_id=cha_id
+JOIN hotel ON cha_hot_id=hot_id
+WHERE cli_nom = 'Squire'
+GROUP BY hot_nom;
+
 
 --  17 - Afficher la durée moyenne des réservations par station
+SELECT AVG(DATEDIFF(res_date_fin, res_date_debut)) AS 'Durée de séjour', sta_nom
+FROM reservation JOIN chambre ON res_cha_id=cha_id
+JOIN hotel ON cha_hot_id=hot_id
+JOIN station ON hot_sta_id=sta_id
+GROUP BY sta_id;
+
+--                                                                                                          select *
+--                                                                                                          from client
+--                                                                                                          join reservation on cli_id=res_cli_id
+--                                                                                                          join chambre on cha_id=res_cha_id
+--                                                                                                          join hotel on hot_id=cha_hot_id
+--                                                                                                          join station on sta_id=hot_sta_id;
