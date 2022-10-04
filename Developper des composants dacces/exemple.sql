@@ -240,6 +240,7 @@ GROUP BY nodep;
 
 --  Afficher les lettres qui sont l'initiale d'au moins trois employés.
 
+
 --  Rechercher le salaire maximum et le salaire minimum parmi tous les
 --  salariés et l'écart entre les deux.
 SELECT max(salaire) AS 'max salaire', min(salaire) AS 'min.salaire', (max(salaire)-min(salaire)) 'écart des salaires'   FROM employe;
@@ -265,5 +266,6 @@ GROUP BY titre;
 
 --  Rechercher le nombre de salaires renseignés et le nombre de taux de
 --  commission renseignés
+
 
 
