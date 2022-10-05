@@ -24,12 +24,14 @@ WHERE stkphy<stkale AND qteann<1000;
 --  5. Quels sont les fournisseurs situés dans les départements 75 78 92 77 ?
 --  L’affichage (département, nom fournisseur) sera effectué par
 --  département décroissant, puis par ordre alphabétique
-SELECT fournis.posfou, fournis.nomfou FROM fournis
-WHERE posfou = '75%%' OR posfou = '78%%%' OR posfou = '92%%%' OR posfou = '77%%%'
-ORDER BY posfou DESC, nomfou ASC;
-
-
---MARCHE AP
+SELECT nomfou , posfou FROM fournis WHERE 
+posfou LIKE '78%' 
+OR
+posfou LIKE '75%'
+OR
+posfou LIKE '92%'
+OR
+posfou LIKE '77%';
 
 --  6. Quelles sont les commandes passées au mois de mars et avril ?
 SELECT * FROM entcom
@@ -38,10 +40,8 @@ WHERE MONTH(datcom) >= 3 AND MONTH(datcom) < 5;
 --  7. Quelles sont les commandes du jour qui ont des observations
 --  particulières ?
 --  (Affichage numéro de commande, date de commande)
-SELECT  FROM entcom
-WHERE entcom.obscom IS NOT NULL;
-
---MARCHE AP
+SELECT  numcom, datcom, obscom FROM entcom
+WHERE entcom.obscom <> "";
 
 --  8. Lister le total de chaque commande par total décroissant
 --  (Affichage numéro de commande et total)
@@ -53,13 +53,16 @@ GROUP BY numcom;
 --  dans le calcul du total les articles commandés en quantité supérieure
 --  ou égale à 1000.
 --  (Affichage numéro de commande et total)
-SELECT numcom, SUM(qteliv*priuni) AS 'total' FROM ligcom
-WHERE 'total' >= '10000' AND 
+SELECT numcom, SUM(qteliv * priuni) AS 'total' FROM ligcom
+WHERE qtecde < 1000
+GROUP BY numcom
+HAVING SUM(qteliv * priuni) >= 10000;
 
 
 
 --  10. Lister les commandes par nom fournisseur
 --  (Afficher le nom du fournisseur, le numéro de commande et la date)
+
 
 --  11. Sortir les produits des commandes ayant le mot "urgent' en
 --  observation?
