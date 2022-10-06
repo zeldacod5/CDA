@@ -62,16 +62,24 @@ HAVING SUM(qteliv * priuni) >= 10000;
 
 --  10. Lister les commandes par nom fournisseur
 --  (Afficher le nom du fournisseur, le numéro de commande et la date)
+SELECT fournis.nomfou, fournis.numfou, entcom.datcom FROM fournis JOIN entcom ON fournis.numfou=entcom.numfou
+ORDER BY nomfou;
 
 
 --  11. Sortir les produits des commandes ayant le mot "urgent' en
 --  observation?
-
 --  (Afficher le numéro de commande, le nom du fournisseur, le libellé du
 --  produit et le sous total = quantité commandée * Prix unitaire)
+SELECT entcom.numcom, fournis.nomfou, produit.libart, (qtecde*priuni) AS 'Sous_total'
+FROM fournis
+JOIN entcom ON fournis.numfou=entcom.numfou
+JOIN ligcom ON entcom.numcom=ligcom.numcom
+JOIN produit ON ligcom.codart=produit.codart
+WHERE entcom.obscom LIKE '%urgent%';
 
 --  12. Coder de 2 manières différentes la requête suivante :
 --  Lister le nom des fournisseurs susceptibles de livrer au moins un article
+
 
 --  13. Coder de 2 manières différentes la requête suivante
 --  Lister les commandes (Numéro et date) dont le fournisseur est celui de
@@ -81,6 +89,7 @@ HAVING SUM(qteliv * priuni) >= 10000;
 --  chers (basés sur Prix1) que le moins cher des rubans (article dont le
 --  premier caractère commence par R). On affichera le libellé de l’article
 --  et prix1
+
 
 --  15. Editer la liste des fournisseurs susceptibles de livrer les produits
 --  dont le stock est inférieur ou égal à 150 % du stock d'alerte. La liste est
