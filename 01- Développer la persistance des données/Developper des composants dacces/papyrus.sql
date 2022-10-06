@@ -1,4 +1,4 @@
--- Active: 1664791382629@@127.0.0.1@3306@papyrus
+-- Active: 1665088951589@@127.0.0.1@3306@papyrus
 --  1. Quelles sont les commandes du fournisseur 09120 ?
 SELECT entcom.numcom, fournis.numfou FROM entcom JOIN fournis ON entcom.numfou=fournis.numfou
 WHERE fournis.numfou = '9120';
@@ -79,21 +79,45 @@ WHERE entcom.obscom LIKE '%urgent%';
 
 --  12. Coder de 2 manières différentes la requête suivante :
 --  Lister le nom des fournisseurs susceptibles de livrer au moins un article
+SELECT fournis.nomfou FROM fournis
+JOIN vente ON vente.numfou=fournis.numfou
+GROUP BY fournis.nomfou;
 
+SELECT nomfou from fournis
+WHERE numfou IN (SELECT numfou FROM vente)
+GROUP BY nomfou;
 
 --  13. Coder de 2 manières différentes la requête suivante
 --  Lister les commandes (Numéro et date) dont le fournisseur est celui de
 --  la commande 70210 :
+SELECT entcom.numcom, entcom.datcom FROM entcom
+JOIN fournis ON fournis.numfou=entcom.numfou
+WHERE entcom.numcom = 70210;
+
+SELECT numcom, datcom FROM entcom
+WHERE numfou IN (SELECT numfou FROM fournis) AND numcom = 70210;
+
 
 --  14. Dans les articles susceptibles d’être vendus, lister les articles moins
 --  chers (basés sur Prix1) que le moins cher des rubans (article dont le
 --  premier caractère commence par R). On affichera le libellé de l’article
 --  et prix1
-
+SELECT produit.libart, vente.prix1 FROM produit join vente ON produit.codart = vente.codart
+WHERE vente.prix1 < (SELECT prix1  
+                     FROM vente 
+                     WHERE codart IN (SELECT codart 
+                                      FROM produit
+                                      WHERE (libart LIKE 'R%') OR (libart LIKE 'r%')
+                                      ) 
+                     ORDER BY prix1 ASC 
+                     LIMIT 1
+                     )
+GROUP BY produit.libart;
 
 --  15. Editer la liste des fournisseurs susceptibles de livrer les produits
 --  dont le stock est inférieur ou égal à 150 % du stock d'alerte. La liste est
 --  triée par produit puis fournisseur
+
 
 --  16. Éditer la liste des fournisseurs susceptibles de livrer les produit dont
 --  le stock est inférieur ou égal à 150 % du stock d'alerte et un délai de
