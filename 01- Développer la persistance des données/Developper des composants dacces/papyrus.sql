@@ -1,4 +1,4 @@
--- Active: 1665088951589@@127.0.0.1@3306@papyrus
+-- Active: 1665057120813@@127.0.0.1@3306@papyrus
 --  1. Quelles sont les commandes du fournisseur 09120 ?
 SELECT entcom.numcom, fournis.numfou FROM entcom JOIN fournis ON entcom.numfou=fournis.numfou
 WHERE fournis.numfou = '9120';
@@ -117,15 +117,29 @@ GROUP BY produit.libart;
 --  15. Editer la liste des fournisseurs susceptibles de livrer les produits
 --  dont le stock est inférieur ou égal à 150 % du stock d'alerte. La liste est
 --  triée par produit puis fournisseur
-
+SELECT * FROM fournis
+JOIN vente ON vente.numfou = fournis.numfou
+JOIN produit ON produit.codart = vente.codart
+WHERE produit.stkphy < (1.5 * produit.stkale)
+GROUP BY fournis.numfou;
 
 --  16. Éditer la liste des fournisseurs susceptibles de livrer les produit dont
 --  le stock est inférieur ou égal à 150 % du stock d'alerte et un délai de
 --  livraison d'au plus 30 jours. La liste est triée par fournisseur puis
 --  produit
+SELECT * FROM fournis
+JOIN vente ON vente.numfou = fournis.numfou
+JOIN produit ON produit.codart = vente.codart
+WHERE (produit.stkphy < (1.5 * produit.stkale)) AND vente.delliv <= 30
+GROUP BY fournis.numfou
+ORDER BY fournis.nomfou ASC, produit.libart ASC;
 
 --  17. Avec le même type de sélection que ci-dessus, sortir un total des
 --  stocks par fournisseur trié par total décroissant
+SELECT SUM() FROM fournis
+JOIN vente ON vente.numfou = fournis.numfou
+JOIN produit ON produit.codart = vente.codart
+;
 
 --  18. En fin d'année, sortir la liste des produits dont la quantité réellement
 --  commandée dépasse 90% de la quantité annuelle prévue.
