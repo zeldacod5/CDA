@@ -1,0 +1,36 @@
+Répondez aux questions suivantes :
+
+    1   Donnez une définition de l'agilité:
+
+L'agilité est une méthode pratique pour rendre un projet flexible, réalisable, motivant et cohérent.
+Cette méthode est apporté et appliqué aux équipes de développeurs.
+Elle permet la fluidité et la transmissions des informations.
+La conception, la modélisation du projet afin d'arriver au sprint et correspondre le plus possible aux besoins clients. 
+
+    2.  Pourquoi l'Extreme Programming ?
+
+L'eXtreme programming est une métode de travail qui peut s'appliquer dans les petites entreprises. Elles consiste à faire travailler plusieurs
+développeurs en même temps fixée sur le même objectif afin de s'entrainer, de parfaire et de réaliser le projet.
+Un développeur fera des modifications ou apportera son jugement et son expérience à la realisation de son collègue.
+Le but est de changé de partenaire/binome le plus possible pour pouvoir assurée une progression de l'équipe constamment.
+
+    3.  Quels avantages y a-t'il à utiliser SCRUM ?
+
+SCRUM permet la réalisation d'un projet rapidement avec une forte valeur ajoutée pour le client.
+Est une méthode adaptée pour une équipe de à peu prêt 10 personnes.
+Elle rend tout cela agile est elle est de plus en plus utilisé dans le cadre de développement logiciel.
+
+
+    4.  Sprint et intégration continue, expliquez le fonctionnement d'un sprint
+
+Le sprint ce sont les rushs de travails appliquées, des réalisations de dev en back ou en front qui permettront un avancement véritable dans le projet.
+les sprints sont préparées et vu, séléctionner au préalable par taches et par développeur.
+ils sont déterminés à l'avance par le coach et sont demandées pour répondre aux attentes clients ou utilisateurs.
+Ils sont déterminées selon un ordre de priorité également.
+
+    5.  TDD :(Test Driven Development), recherchez des informations pour expliquer le principe.
+    
+OU autrement dit, développement développé par les tests en français..
+est une méthode de développement logiciel qui consiste à concevoir un logiciel par petites étapes,
+en écrivant avant chaque partie du code source les tests correspondant et en remaniant le code continuellement 
+le but est de réussir les tets avant même d'avoir écrit les lignes de code.
