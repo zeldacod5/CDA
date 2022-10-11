@@ -17,8 +17,9 @@ UPDATE entcom JOIN fournis
 SET obscom = '*****'
 WHERE satisf < 5;
 
+
 --  4. Suppression du produit I110
 DELETE * FROM produit JOIN ligcom JOIN vente
 WHERE codart = 'I110';
 
---  5. Suppression des entête de commande qui n'ont aucune ligne
+--  5. Suppression des entête de commande qui n'ont aucune ligne.

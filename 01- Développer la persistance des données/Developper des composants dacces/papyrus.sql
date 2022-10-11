@@ -138,8 +138,7 @@ ORDER BY fournis.nomfou ASC, produit.libart ASC;
 --  stocks par fournisseur trié par total décroissant
 SELECT SUM() FROM fournis
 JOIN vente ON vente.numfou = fournis.numfou
-JOIN produit ON produit.codart = vente.codart
-;
+JOIN produit ON produit.codart = vente.codart;
 
 --  18. En fin d'année, sortir la liste des produits dont la quantité réellement
 --  commandée dépasse 90% de la quantité annuelle prévue.
@@ -149,3 +148,18 @@ JOIN produit ON produit.codart = vente.codart
 
 --  20. Existe-t-il des lignes de commande non cohérentes avec les produits
 --  vendus par les fournisseurs. ?
+
+
+
+
+--  Réalisez les vues suivantes sur papyrus:
+
+--      v_GlobalCde correspondant à la requête :
+--     A partir de la table Ligcom, afficher par code produit, la somme des quantités commandées et le prix total correspondant :
+--       on nommera la colonne correspondant à la somme des quantités commandées, QteTot et le prix total, PrixTot.
+
+--      v_VentesI100 correspondant à la requête :
+--     Afficher les ventes dont le code produit est le I100 (affichage de toutes les colonnes de la table Vente).
+
+--      A partir de la vue précédente,
+--     créez v_VentesI100Grobrigan remontant toutes les ventes concernant le produit I100 et le fournisseur 00120.

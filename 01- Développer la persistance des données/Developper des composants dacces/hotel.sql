@@ -90,9 +90,41 @@ JOIN hotel ON cha_hot_id=hot_id
 JOIN station ON hot_sta_id=sta_id
 GROUP BY sta_id;
 
---                                                                                                          select *
---                                                                                                          from client
---                                                                                                          join reservation on cli_id=res_cli_id
---                                                                                                          join chambre on cha_id=res_cha_id
---                                                                                                          join hotel on hot_id=cha_hot_id
---                                                                                                          join station on sta_id=hot_sta_id;
+--                                                                 select *
+--                                                                 from client
+--                                                                 join reservation on cli_id=res_cli_id
+--                                                                 join chambre on cha_id=res_cha_id
+--                                                                 join hotel on hot_id=cha_hot_id
+--                                                                 join station on sta_id=hot_sta_id;
+
+--  A partir de la base hotel, créez les vues suivantes :
+
+--      Afficher la liste des hôtels avec leur station
+CREATE VIEW Hotel_et_station AS
+SELECT hot_nom, sta_nom
+FROM station JOIN hotel ON sta_id=hot_sta_id;
+
+--      Afficher la liste des chambres et leur hôtel
+CREATE VIEW Chambre_et_leur_hotel AS
+SELECT cha_hot_id, hot_nom, cha_numero
+FROM hotel JOIN chambre ON hot_id=cha_hot_id;
+
+
+--      Afficher la liste des réservations avec le nom des clients
+CREATE VIEW Reservations_et_clients AS
+SELECT res_id, res_cli_id, cli_nom
+FROM client JOIN reservation ON cli_id=res_cli_id;
+
+--      Afficher la liste des chambres avec le nom de l’hôtel et le nom de la station
+CREATE VIEW Chambre_hotel_station AS
+SELECT cha_hot_id, cha_numero, hot_nom, sta_nom
+FROM station 
+JOIN hotel ON sta_id=hot_sta_id
+JOIN chambre ON hot_id=cha_hot_id;
+
+--      Afficher les réservations avec le nom du client et le nom de l’hôtel
+CREATE VIEW Resa_client_et_hotel AS
+SELECT res_id, res_cli_id, cli_nom, hot_nom
+FROM client JOIN reservation ON cli_id=res_cli_id
+JOIN chambre ON cha_id=res_cha_id
+JOIN hotel ON hot_id=cha_hot_id;
