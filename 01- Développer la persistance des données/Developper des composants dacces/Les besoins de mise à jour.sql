@@ -13,7 +13,7 @@ WHERE prix2 = 0;
 
 --  3. Mettre à jour le champ obscom en positionnant '*****' pour toutes les
 --  commandes dont le fournisseur a un indice de satisfaction <5
-UPDATE entcom JOIN fournis
+UPDATE entcom FROM entcom JOIN fournis ON fournis.numfou=entcom.numfou
 SET obscom = '*****'
 WHERE satisf < 5;
 

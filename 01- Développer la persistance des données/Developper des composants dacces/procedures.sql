@@ -26,4 +26,9 @@ DELIMITER |
 
 CREATE PROCEDURE CA_Fournisseur()
 BEGIN
-    
+    SELECT
+END |
+
+DELIMITER ;
+
+
