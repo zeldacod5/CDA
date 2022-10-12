@@ -6,3 +6,4 @@ CREATE TRIGGER no_modif_resa AFTER INSERT ON reservation
         IF altitude<1000 THEN
             SIGNAL SQLSTATE '40000' SET MESSAGE_TEXT = 'Un problème est survenu. Règle de gestion altitude !';
         END IF;
+
