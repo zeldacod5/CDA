@@ -1,4 +1,4 @@
--- Active: 1665057120813@@127.0.0.1@3306@papyrus
+-- Active: 1665088951589@@127.0.0.1@3306@papyrus
 --  1. Quelles sont les commandes du fournisseur 09120 ?
 SELECT entcom.numcom, fournis.numfou FROM entcom JOIN fournis ON entcom.numfou=fournis.numfou
 WHERE fournis.numfou = '9120';

@@ -5,7 +5,7 @@
 
 
 -- 1. Afficher toutes les informations concernant les employés.
-Select * from employe
+Select * from employe;
 
 -- 2. Afficher toutes les informations concernant les départements.
 SELECT * FROM dept; 

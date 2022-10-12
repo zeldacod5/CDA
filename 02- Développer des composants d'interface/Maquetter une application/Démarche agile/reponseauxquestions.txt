@@ -11,7 +11,7 @@ La conception, la modélisation du projet afin d'arriver au sprint et correspond
 
 L'eXtreme programming est une métode de travail qui peut s'appliquer dans les petites entreprises. Elles consiste à faire travailler plusieurs
 développeurs en même temps fixée sur le même objectif afin de s'entrainer, de parfaire et de réaliser le projet.
-Un développeur fera des modifications ou apportera son jugement et son expérience à la realisation de son collègue.
+Un développeur fera des modifications ou apportera son jugement et son expérience à la realisation du travail de son collègue.
 Le but est de changé de partenaire/binome le plus possible pour pouvoir assurée une progression de l'équipe constamment.
 
     3.  Quels avantages y a-t'il à utiliser SCRUM ?
