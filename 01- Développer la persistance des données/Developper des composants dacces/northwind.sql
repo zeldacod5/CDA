@@ -41,12 +41,12 @@ GROUP BY customers.Country;
 -- 7.Montant des ventes de 1997 :
 SELECT SUM(`order details`.UnitPrice * `order details`.Quantity) AS 'TOTAL AMOUNT 1997' FROM `order details`
 JOIN orders ON orders.OrderID = `order details`.OrderID
-WHERE orders.OrderDate LIKE '1997%';
+WHERE YEAR(orders.OrderDate) = 1997;
 
 -- 8.Montant des ventes de 1997 mois par mois :
-SELECT MONTH(orders.OrderDate) AS 'Mois',SUM(`order details`.UnitPrice * `order details`.Quantity) AS 'TOTAL AMOUNT 1997' FROM `order details`
+SELECT MONTH(orders.OrderDate) AS 'MOIS',SUM(`order details`.UnitPrice * `order details`.Quantity) AS 'TOTAL AMOUNT 1997' FROM `order details`
 JOIN orders ON orders.OrderID = `order details`.OrderID
-WHERE orders.OrderDate LIKE '1997%'
+WHERE YEAR(orders.OrderDate) = 1997
 GROUP BY MONTH(orders.OrderDate);
 
 -- 9.Depuis quelle date le client « Du monde entier » n’a plus commandé ?
