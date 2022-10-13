@@ -44,4 +44,18 @@ JOIN orders ON orders.OrderID = `order details`.OrderID
 WHERE orders.OrderDate LIKE '1997%';
 
 -- 8.Montant des ventes de 1997 mois par mois :
-SELECT ;
+SELECT MONTH(orders.OrderDate) AS 'Mois',SUM(`order details`.UnitPrice * `order details`.Quantity) AS 'TOTAL AMOUNT 1997' FROM `order details`
+JOIN orders ON orders.OrderID = `order details`.OrderID
+WHERE orders.OrderDate LIKE '1997%'
+GROUP BY MONTH(orders.OrderDate);
+
+-- 9.Depuis quelle date le client « Du monde entier » n’a plus commandé ?
+SELECT customers.CompanyName AS 'NOM DU CLIENT', orders.OrderDate AS 'DATE DERNIERE CMD' FROM customers
+JOIN orders ON orders.CustomerID = customers.CustomerID
+WHERE customers.CompanyName = 'Du monde entier'
+ORDER BY YEAR(orders.OrderDate) DESC, MONTH(orders.OrderDate) DESC, DAY(orders.OrderDate) DESC
+LIMIT 1;
+
+-- 10.Quel est le délai moyen de livraison en jours ?
+SELECT SUM(DATEDIFF(ShippedDate, OrderDate)) / COUNT(ShippedDate) AS 'DELAI LIVR. MOY.' FROM orders
+WHERE ShippedDate IS NOT NULL;
