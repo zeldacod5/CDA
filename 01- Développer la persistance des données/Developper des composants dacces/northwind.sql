@@ -11,13 +11,13 @@ WHERE suppliers.CompanyName = 'Exotic Liquids'
 GROUP BY products.ProductName;
 
 -- 3.Nombre de produits vendus par les fournisseurs Français dans l’ordre décroissant :
-SELECT suppliers.CompanyName, COUNT(products.ProductName) AS 'Nbre produits' FROM suppliers JOIN products
+SELECT suppliers.CompanyName, COUNT(products.ProductName) AS 'NBRE PRODUITS' FROM suppliers JOIN products
 ON products.SupplierID = suppliers.SupplierID
 WHERE suppliers.Country = 'France'
 GROUP BY suppliers.CompanyName;
 
 -- 4.Liste des clients Français ayant plus de 10 commandes :
-SELECT customers.CompanyName, COUNT(orders.OrderID) AS 'Nbre commandes' FROM customers JOIN orders
+SELECT customers.CompanyName, COUNT(orders.OrderID) AS 'NBRE COMMANDES' FROM customers JOIN orders
 ON orders.CustomerID = customers.CustomerID
 WHERE customers.Country = 'France'
 GROUP BY customers.CompanyName;
