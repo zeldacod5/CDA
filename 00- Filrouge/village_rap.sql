@@ -1,8 +1,8 @@
-DROP DATABASE village_rap IF EXISTS;
+DROP DATABASE IF EXISTS village_rap;
 
 CREATE DATABASE village_rap;
 
-USE DATABASE village_rap;
+USE village_rap;
 
 CREATE TABLE supplier(
     supplier_id INT,
