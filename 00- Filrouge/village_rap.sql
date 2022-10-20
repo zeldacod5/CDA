@@ -136,9 +136,9 @@ CREATE TABLE prepared(
     product_id INT,
     delivery_number INT,
     quantite_livrée INT,
-    PRIMARY KEY(product_id, delivery_number),
+    PRIMARY KEY(product_id, delivery_id),
     FOREIGN KEY(product_id) REFERENCES product(product_id),
-    FOREIGN KEY(delivery_number) REFERENCES delivery(delivery_number)
+    FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_id)
 );
 
 insert into village_rap (category_id, category_name, category_picture, category_desc) values (1, 'Ford', 'https://robohash.org/iustooditaperiam.png?size=50x50&set=set1', 'Litrocranius walleri');
