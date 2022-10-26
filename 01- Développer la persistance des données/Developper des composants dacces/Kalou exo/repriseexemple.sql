@@ -1,30 +1,36 @@
+-- Active: 1665088951589@@127.0.0.1@3306@exemple
 /!\ /!\ /!\ 
 :: BASE EXEMPLE PARTIE 1
-/!\ /!\ /!\ 
+/!\ /!\ /!\ ;
 
 
 -- 1. Afficher toutes les informations concernant les employés.
 
+SELECT * FROM employe;
 
 -- 2. Afficher toutes les informations concernant les départements.
-
+SELECT * FROM dept;
 
 -- 3. Afficher le nom, la date dembauche, le numéro du supérieur, le
 --          numéro de département et le salaire de tous les employés.
-
+SELECT nom, dateemb, nosup, nodep, salaire FROM employe;
 
 -- 4. Afficher le titre de tous les employés.
-
+SELECT nom, titre FROM employe;
 
 -- 5. Afficher les différentes valeurs des titres des employés.
-
+SELECT DISTINCT titre FROM employe;
 
 --6. Afficher le nom, le numéro d'employé et le numéro du
 --   département des employés dont le titre est « Secrétaire ».
-
+SELECT nom, noemp, nodep FROM employe
+WHERE titre = "secrétaire";
 
 --7. Afficher le nom et le numéro de département dont le numéro de
 --   département est supérieur à 40.
+SELECT nodept, nom
+from dept
+where nodept>40;
 
 --8. Afficher le nom et le prénom des employés dont le nom est
 --   alphabétiquement antérieur au prénom.

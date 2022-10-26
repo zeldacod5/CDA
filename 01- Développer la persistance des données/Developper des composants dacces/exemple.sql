@@ -28,7 +28,7 @@ WHERE employe.titre LIKE "secrétaire";
 --7. Afficher le nom et le numéro de département dont le numéro de
 --   département est supérieur à 40.
 SELECT nom AS 'nom departement', nodept FROM dept
-WHERE nodept > 40;
+WHERE nodep > 40;
 
 --8. Afficher le nom et le prénom des employés dont le nom est
 --   alphabétiquement antérieur au prénom.
