@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2022-11-09T15:18:01.124Z" agent="5.0 (X11; Ubuntu)" etag="bIAhHIlt7C-Wbmjjkgjn" version="20.5.3" type="github">
+  <diagram id="H5IJ8XWs5-9HHultcfg_" name="Page-1">
+    <mxGraphModel dx="1673" dy="965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd-9zX9yJSsU6LpEiTB-6" target="RZd-9zX9yJSsU6LpEiTB-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-6" value="Création d&#39;un panier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd-9zX9yJSsU6LpEiTB-1" target="RZd-9zX9yJSsU6LpEiTB-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-1" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="185" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-3" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="185" y="1090" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd-9zX9yJSsU6LpEiTB-8" target="RZd-9zX9yJSsU6LpEiTB-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-8" value="Validation du panier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd-9zX9yJSsU6LpEiTB-9" target="RZd-9zX9yJSsU6LpEiTB-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-9" value="Identification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-19" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffc0;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="167.5" y="400" width="65" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-20" value="[non valide]" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="RZd-9zX9yJSsU6LpEiTB-19" parent="1" target="RZd-9zX9yJSsU6LpEiTB-9">
+          <mxGeometry x="-0.2083" y="-10" relative="1" as="geometry">
+            <mxPoint x="265" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="285" y="420" />
+              <mxPoint x="285" y="330" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-21" value="[ok]" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" edge="1" parent="1">
+          <mxGeometry x="-0.5" y="-25" relative="1" as="geometry">
+            <mxPoint x="199.5" y="490" as="targetPoint" />
+            <mxPoint x="199.5" y="450" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="199.5" y="440" />
+              <mxPoint x="199.5" y="440" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RZd-9zX9yJSsU6LpEiTB-23" target="RZd-9zX9yJSsU6LpEiTB-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-23" value="Commande" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RZd-9zX9yJSsU6LpEiTB-25" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
