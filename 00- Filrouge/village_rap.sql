@@ -1,19 +1,17 @@
 -- Active: 1665057120813@@127.0.0.1@3306@village_rap
 DROP DATABASE IF EXISTS village_rap;
-
 CREATE DATABASE village_rap;
-
 USE village_rap;
-
 CREATE TABLE supplier(
     supplier_id INT,
-    supplier_phone VARCHAR(20),
+    supplier_phone VARCHAR(255),
     supplier_name VARCHAR(255),
     supplier_surname VARCHAR(255),
     supplier_adress VARCHAR(255),
     supplier_city VARCHAR(255),
     supplier_mail VARCHAR(255),
-    supplier_zipcode VARCHAR(15),
+    supplier_zipcode VARCHAR(255),
+    supplier_country VARCHAR(255),
     PRIMARY KEY(supplier_id)
 );
 
@@ -24,10 +22,10 @@ CREATE TABLE buyer(
     buyer_name VARCHAR(255),
     buyer_surname VARCHAR(255),
     buyer_adress VARCHAR(255),
-    buyer_zipcode VARCHAR(15),
+    buyer_zipcode VARCHAR(255),
     buyer_city VARCHAR(255),
-    buyer_country VARCHAR(50),
-    buyer_phone VARCHAR(20),
+    buyer_country VARCHAR(255),
+    buyer_phone VARCHAR(255),
     buyer_mail VARCHAR(255),
     PRIMARY KEY(buyer_id)
 );
@@ -36,7 +34,7 @@ CREATE TABLE category(
     category_id INT,
     category_name VARCHAR(255),
     category_picture TEXT,
-    category_desc TEXT,
+    category_description TEXT,
     PRIMARY KEY(category_id)
 );
 
@@ -100,10 +98,12 @@ CREATE TABLE product(
     product_name VARCHAR(50),
     product_shortlib VARCHAR(255),
     product_longlib TEXT,
-    product_referencies TEXT,
+    product_reference TEXT,
     product_price INT,
     product_picture TEXT,
     product_stock INT NOT NULL,
+    product_stock_max VARCHAR(255),
+    product_stock_alert INT,
     product_price_included_taxes DECIMAL(9, 2),
     supplier_id INT NOT NULL,
     subcategory_id INT NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE product(
     FOREIGN KEY(subcategory_id) REFERENCES subcategory(subcategory_id)
 );
 
-CREATE TABLE deals(
+CREATE TABLE deal(
     buyer_id INT,
     staff_id INT,
     PRIMARY KEY(buyer_id, staff_id),
@@ -135,7 +135,7 @@ CREATE TABLE composed_by(
 CREATE TABLE prepared(
     product_id INT,
     delivery_id INT,
-    quantite_livrée INT,
+    delivery_quantity INT,
     PRIMARY KEY(product_id, delivery_id),
     FOREIGN KEY(product_id) REFERENCES product(product_id),
     FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_id)

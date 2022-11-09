@@ -1,0 +1,30 @@
+
+Pour chaque cas d’utilisation, vous devez rédiger une documentation contenant :
+
+une description rapide
+comment et quand commence et se termine le cas d’utilisation
+le flux nominal
+les n flots alternatifs
+
+Flux nominal / Flux alternatif
+Le flux nominal, c'est quand tout ce passe bien, c’est un
+scénario (happy day scénario).
+Puis on a un scénario alternatif pour chaque point de
+décision et chaque exception.
+On écrira les différents scénarii possibles : ils constitueront
+la base des jeux de tests.
+
+
+Le client entre sur le site
+La machine envoi l'URL lien d'acceuil
+Le client se connecte sur son compte utilisateur
+La machine vérifie la véracité des informations et connecte l'utilisateur
+La machine envoi l'utilisateur vers le catalogue
+
+
+
+
+
+
+
+
