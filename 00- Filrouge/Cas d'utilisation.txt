@@ -23,8 +23,3 @@ La machine envoi l'utilisateur vers le catalogue
 
 
 
-
-
-
-
-
