@@ -18,6 +18,4 @@
     foreach ($mois as $k=>$i) {
         echo "Le mois de $k est composé de $i jours<br>";
     }
-
- 
 ?> 
