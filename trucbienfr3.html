@@ -1,0 +1,35 @@
+
+
+      {% for cat in categories %}
+    
+      <li class="nav-item">
+        <a 
+          class="nav-link  "  
+          href="/categorie/{{cat.id}}"
+        >
+          {{ cat.name }}
+        </a>
+      </li>
+
+
+      {% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+        <h2>
+                {{ categorie.name }}
+        </h2>
+
+                {% for produit in categorie.produits %}
+                    <div class="bordure-grise shadow">
+                        <img src="" alt="" srcset="">
+                        {{ produit.libelle }}
+                        {{ produit.prix }}
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
